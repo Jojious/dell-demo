@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ข้อเสนอโครงการ: All-in-One Marketplace Thailand</title>
+    <title>ข้อเสนอโครงการ: DealDee Marketplace Thailand</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Warm Neutrals & Subtle Teal -->
-    <!-- Application Structure Plan: ผมได้ออกแบบแอปพลิเคชันนี้ในรูปแบบการเล่าเรื่อง (Narrative Flow) เพื่อนำเสนอต่อนักลงทุน โดยเริ่มจากวิสัยทัศน์ที่ชัดเจน, ตามด้วยโมเดลธุรกิจแบบอินเทอร์แอคทีฟที่ให้ผู้ใช้คลิกสำรวจได้, จากนั้นเจาะลึกกลุ่มลูกค้าและรายได้ผ่านกราฟที่เข้าใจง่าย, และปิดท้ายด้วยกลยุทธ์การเข้าสู่ตลาดที่ชัดเจนเป็นขั้นตอน วิธีนี้ช่วยสร้างความน่าสนใจและทำให้ข้อมูลที่ซับซ้อนเข้าใจง่ายกว่าการแสดงผลแบบตารางคงที่ -->
+    <!-- Application Structure Plan: ผมได้ออกแบบแอปพลิเคชันนี้ในรูปแบบการเล่าเรื่อง (Narrative Flow) เพื่อนำเสนอต่อนักลงทุน โดยเริ่มจากวิสัยทัศน์, โมเดลธุรกิจ, ตัวอย่างสินค้า, โอกาสในตลาด, กลุ่มลูกค้า, ประมาณการทางการเงิน, ทีมงาน และปิดท้ายด้วยกลยุทธ์การเข้าสู่ตลาดที่ชัดเจนเป็นขั้นตอน เพื่อสร้างการนำเสนอที่ครบถ้วนและน่าเชื่อถือ -->
     <!-- Visualization & Content Choices: 
-        - Business Model Canvas: Goal: Organize -> Viz: Interactive Grid (HTML/Tailwind) -> Interaction: Click to reveal details in a modal -> Justification: Engaging way to explore the 9 components without overwhelming the user.
-        - Customer Segments: Goal: Compare -> Viz: Donut Chart (Chart.js) -> Interaction: Hover/Click on segments to highlight & display info -> Justification: Visually shows the target market focus, emphasizing the initial niche strategy.
-        - Revenue Streams: Goal: Compare -> Viz: Bar Chart (Chart.js) -> Interaction: Hover for tooltips with details -> Justification: Clearly illustrates the potential of each revenue source, making the business model tangible.
-        - Go-to-Market Strategy: Goal: Change/Process -> Viz: Numbered step-by-step cards (HTML/Tailwind) -> Interaction: Static visual flow -> Justification: Presents the roadmap as a clear, actionable plan.
-        - All other data: Goal: Inform -> Viz: Styled cards (HTML/Tailwind) -> Interaction: None -> Justification: Clean and professional presentation for supporting details.
+        - Hero Image: Goal: Inform/Engage -> Viz: Background Image -> Interaction: None -> Justification: Creates a strong visual first impression.
+        - Business Model Canvas: Goal: Organize -> Viz: Interactive Grid (HTML/Tailwind) -> Interaction: Click to reveal details -> Justification: Engaging way to explore the 9 components.
+        - Product Showcase: Goal: Inform/Organize -> Viz: Tabbed Image Gallery (HTML/JS) -> Interaction: Click tabs to switch categories -> Justification: Visually demonstrates the platform's core offerings.
+        - Why Now?: Goal: Inform/Persuade -> Viz: Icon-based feature cards -> Interaction: None -> Justification: Clearly articulates the market opportunity.
+        - Customer Segments: Goal: Compare -> Viz: Donut Chart (Chart.js) -> Interaction: Hover to highlight -> Justification: Visually shows the target market focus.
+        - Financial Projections: Goal: Inform/Analyze -> Viz: Line Chart (Chart.js) -> Interaction: Hover for tooltips -> Justification: Shows growth potential clearly and professionally.
+        - Team: Goal: Build Trust -> Viz: Profile cards -> Interaction: None -> Justification: Introduces the core team to build investor confidence.
+        - Go-to-Market Strategy: Goal: Change/Process -> Viz: Numbered step-by-step cards -> Interaction: Static visual flow -> Justification: Presents a clear, actionable plan.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -48,19 +51,42 @@
         .modal {
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
+        .hero-section {
+            background-image: linear-gradient(rgba(253, 251, 245, 0.8), rgba(253, 251, 245, 1)), url('https://placehold.co/1920x1080/d1d5db/6b7280?text=DealDee+Marketplace');
+            background-size: cover;
+            background-position: center;
+        }
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: #A8A29E;
+        }
+        .tab-btn:hover {
+            color: #57534E;
+        }
+        .tab-btn.active {
+            color: #14B8A6;
+            border-bottom-color: #14B8A6;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body class="bg-warm-gray text-warm-brown">
 
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <h1 class="text-xl font-bold text-accent-teal">All-in-One Marketplace</h1>
-            <div class="hidden md:flex space-x-8">
-                <a href="#vision" class="hover:text-accent-teal transition-colors">วิสัยทัศน์</a>
-                <a href="#canvas" class="hover:text-accent-teal transition-colors">โมเดลธุรกิจ</a>
-                <a href="#customers" class="hover:text-accent-teal transition-colors">กลุ่มลูกค้า</a>
-                <a href="#revenue" class="hover:text-accent-teal transition-colors">รายได้</a>
-                <a href="#strategy" class="hover:text-accent-teal transition-colors">กลยุทธ์</a>
+            <h1 class="text-xl font-bold text-accent-teal">DealDee</h1>
+            <div class="hidden md:flex space-x-6 lg:space-x-8">
+                <a href="#vision" class="hover:text-accent-teal transition-colors text-sm lg:text-base">วิสัยทัศน์</a>
+                <a href="#canvas" class="hover:text-accent-teal transition-colors text-sm lg:text-base">โมเดลธุรกิจ</a>
+                <a href="#showcase" class="hover:text-accent-teal transition-colors text-sm lg:text-base">ตัวอย่างสินค้า</a>
+                <a href="#why-now" class="hover:text-accent-teal transition-colors text-sm lg:text-base">โอกาสในตลาด</a>
+                <a href="#financials" class="hover:text-accent-teal transition-colors text-sm lg:text-base">การเงิน</a>
+                <a href="#team" class="hover:text-accent-teal transition-colors text-sm lg:text-base">ทีมงาน</a>
+                <a href="#strategy" class="hover:text-accent-teal transition-colors text-sm lg:text-base">กลยุทธ์</a>
             </div>
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="focus:outline-none">
@@ -71,18 +97,20 @@
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
              <a href="#vision" class="block py-2 hover:text-accent-teal transition-colors">วิสัยทัศน์</a>
              <a href="#canvas" class="block py-2 hover:text-accent-teal transition-colors">โมเดลธุรกิจ</a>
-             <a href="#customers" class="block py-2 hover:text-accent-teal transition-colors">กลุ่มลูกค้า</a>
-             <a href="#revenue" class="block py-2 hover:text-accent-teal transition-colors">รายได้</a>
+             <a href="#showcase" class="block py-2 hover:text-accent-teal transition-colors">ตัวอย่างสินค้า</a>
+             <a href="#why-now" class="block py-2 hover:text-accent-teal transition-colors">โอกาสในตลาด</a>
+             <a href="#financials" class="block py-2 hover:text-accent-teal transition-colors">การเงิน</a>
+             <a href="#team" class="block py-2 hover:text-accent-teal transition-colors">ทีมงาน</a>
              <a href="#strategy" class="block py-2 hover:text-accent-teal transition-colors">กลยุทธ์</a>
         </div>
     </header>
 
     <main>
-        <section id="vision" class="bg-warm-beige py-20 md:py-28">
+        <section id="vision" class="hero-section py-20 md:py-28">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-5xl font-bold text-warm-brown mb-4">พลิกโฉม E-commerce ไทย</h2>
                 <p class="text-lg md:text-xl max-w-4xl mx-auto mb-8 text-warm-brown/80">สู่แพลตฟอร์มที่รวมการ <span class="text-accent-teal font-semibold">ซื้อ-ขาย</span>, <span class="text-accent-teal font-semibold">เทรด-แลกเปลี่ยน</span>, และ <span class="text-accent-teal font-semibold">ประมูล</span> ไว้ในที่เดียว</p>
-                <div class="bg-white p-8 rounded-xl shadow-custom max-w-5xl mx-auto border border-gray-200">
+                <div class="bg-white/70 backdrop-blur-sm p-8 rounded-xl shadow-custom max-w-5xl mx-auto border border-gray-200">
                     <h3 class="text-xl font-semibold mb-3 text-gray-700">วิสัยทัศน์ (Vision)</h3>
                     <p class="text-base md:text-lg text-gray-600">สร้างแพลตฟอร์ม E-commerce ชั้นนำของไทยที่ตอบสนองทุกความต้องการของผู้ใช้ในยุคดิจิทัล โดยเน้นที่ความน่าเชื่อถือ, ความปลอดภัย, และการสร้างชุมชนที่แข็งแกร่ง</p>
                 </div>
@@ -99,12 +127,40 @@
                 </div>
             </div>
         </section>
+        
+        <section id="showcase" class="py-20 bg-warm-beige">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-2">ตัวอย่างสินค้าในแพลตฟอร์ม</h2>
+                    <p class="text-lg text-warm-brown/80 max-w-2xl mx-auto">สัมผัสประสบการณ์ของแพลตฟอร์มผ่านสินค้าหลากหลายประเภทที่เราจะนำเสนอ</p>
+                </div>
+                <div class="flex justify-center mb-8 border-b border-gray-200">
+                    <button class="tab-btn active" data-tab="trade">แลกเปลี่ยน (Trade)</button>
+                    <button class="tab-btn" data-tab="sell">ซื้อ-ขาย (Sell)</button>
+                    <button class="tab-btn" data-tab="bid">ประมูล (Bid)</button>
+                </div>
+                <div id="trade" class="tab-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                <div id="sell" class="tab-content hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                <div id="bid" class="tab-content hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            </div>
+        </section>
+
+        <section id="why-now" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-2">ทำไมต้องตอนนี้? (Market Opportunity)</h2>
+                    <p class="text-lg text-warm-brown/80 max-w-3xl mx-auto">ตลาด E-commerce ไทยกำลังอยู่ในจุดที่เหมาะสมที่สุดสำหรับการเปลี่ยนแปลง ด้วยปัจจัยสนับสนุนที่แข็งแกร่ง</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center" id="why-now-cards">
+                </div>
+            </div>
+        </section>
 
         <section id="customers" class="py-20 bg-warm-beige">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold mb-2">ทำความเข้าใจกลุ่มลูกค้าของเรา</h2>
-                    <p class="text-lg text-warm-brown/80 max-w-2xl mx-auto">เราเริ่มต้นด้วยการเจาะกลุ่มลูกค้าที่มีความต้องการชัดเจน และขยายฐานผู้ใช้ออกไปในวงกว้าง แผนภูมินี้แสดงถึงกลุ่มเป้าหมายหลักของเรา</p>
+                    <p class="text-lg text-warm-brown/80 max-w-2xl mx-auto">เราเริ่มต้นด้วยการเจาะกลุ่มลูกค้าที่มีความต้องการชัดเจน และขยายฐานผู้ใช้ออกไปในวงกว้าง</p>
                 </div>
                 <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                     <div class="w-full lg:w-1/2">
@@ -118,21 +174,32 @@
             </div>
         </section>
 
-        <section id="revenue" class="py-20">
+        <section id="financials" class="py-20">
              <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold mb-2">ช่องทางการสร้างรายได้</h2>
-                    <p class="text-lg text-warm-brown/80 max-w-2xl mx-auto">โมเดลรายได้ของเรามีความหลากหลายและยืดหยุ่น เพื่อสร้างการเติบโตที่ยั่งยืน โดยเน้นที่การสร้างรายได้เมื่อผู้ใช้ประสบความสำเร็จ</p>
+                    <h2 class="text-3xl font-bold mb-2">ประมาณการทางการเงิน (Financial Projections)</h2>
+                    <p class="text-lg text-warm-brown/80 max-w-2xl mx-auto">เราคาดการณ์การเติบโตของรายได้ที่แข็งแกร่งใน 3 ปีแรก จากการขยายฐานผู้ใช้และโมเดลรายได้ที่หลากหลาย</p>
                 </div>
                  <div class="bg-white p-6 md:p-8 rounded-xl shadow-custom max-w-4xl mx-auto border border-gray-200">
-                    <div class="chart-container h-80 md:h-96" style="max-width: 800px;">
-                        <canvas id="revenueChart"></canvas>
+                    <div class="h-80 md:h-96" style="max-width: 800px; margin: auto; position: relative;">
+                        <canvas id="financialsChart"></canvas>
                     </div>
                  </div>
             </div>
         </section>
 
-        <section id="strategy" class="py-20 bg-warm-beige">
+        <section id="team" class="py-20 bg-warm-beige">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-2">ทีมของเรา (Meet the Team)</h2>
+                    <p class="text-lg text-warm-brown/80 max-w-2xl mx-auto">เราคือทีมที่มีความหลงใหลและประสบการณ์ พร้อมที่จะผลักดันให้ DealDee เป็นผู้นำตลาด</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="team-cards">
+                </div>
+            </div>
+        </section>
+
+        <section id="strategy" class="py-20">
             <div class="container mx-auto px-6">
                  <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold mb-2">กลยุทธ์สู่ความสำเร็จ (Go-to-Market Strategy)</h2>
@@ -142,23 +209,12 @@
                 </div>
             </div>
         </section>
-        
-        <section class="py-20">
-            <div class="container mx-auto px-6">
-                 <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold mb-2">รากฐานสู่ความสำเร็จ</h2>
-                    <p class="text-lg text-warm-brown/80 max-w-2xl mx-auto">ปัจจัยสำคัญที่จะขับเคลื่อนให้แพลตฟอร์มของเราประสบความสำเร็จ</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="foundation-section">
-                </div>
-            </div>
-        </section>
 
     </main>
 
     <footer class="bg-warm-brown text-white py-8">
         <div class="container mx-auto px-6 text-center">
-            <p>All-in-One Marketplace Thailand - โอกาสในการลงทุนเพื่ออนาคตของ E-commerce ไทย</p>
+            <p>DealDee Marketplace - โอกาสในการลงทุนเพื่ออนาคตของ E-commerce ไทย</p>
         </div>
     </footer>
     
@@ -175,73 +231,52 @@
 
     <script>
         const businessModelData = {
-            "กลุ่มลูกค้าหลัก (Customer Segments)": {
-                icon: "👥",
-                details: "<ul><li class='mb-2'><strong>บุคคลทั่วไป (C2C):</strong> ผู้ที่ต้องการขายของมือสอง, ซื้อของในราคาที่ถูกลง, หรือหาของที่ไม่ผลิตแล้ว</li><li class='mb-2'><strong>นักสะสม (Collectors):</strong> กลุ่มเป้าหมายสำคัญสำหรับการประมูลและแลกเปลี่ยน (เช่น พระเครื่อง, ของเล่น, การ์ดเกม)</li><li class='mb-2'><strong>ผู้ประกอบการรายย่อย (SMEs):</strong> ร้านค้าขนาดเล็กที่ต้องการช่องทางในการขายสินค้า</li><li class='mb-2'><strong>กลุ่มเฉพาะทาง (Niche Communities):</strong> กลุ่มคนรักกล้องฟิล์ม, เกมเมอร์, กลุ่มแฟชั่น</li></ul>"
-            },
-            "คุณค่าที่นำเสนอ (Value Propositions)": {
-                icon: "🎁",
-                details: "<ul><li class='mb-2'><strong>ความสะดวกครบวงจร (One-Stop Service):</strong> แพลตฟอร์มเดียวจบ ไม่ต้องสลับแอปฯ</li><li class='mb-2'><strong>ความปลอดภัยและน่าเชื่อถือ (Trust & Security):</strong> ผ่านระบบ Escrow, การยืนยันตัวตน (KYC), และระบบรีวิวผู้ใช้</li><li class='mb-2'><strong>โอกาสในการค้นพบสิ่งใหม่ (Discovery):</strong> แหล่งรวมสินค้าหายากและสินค้าเฉพาะกลุ่ม</li></ul>"
-            },
-            "ช่องทาง (Channels)": {
-                icon: "📢",
-                details: "<ul><li class='mb-2'><strong>Mobile Application (iOS & Android):</strong> ช่องทางหลัก เน้น UI/UX ที่ใช้งานง่าย</li><li class='mb-2'><strong>Website:</strong> สำหรับการใช้งานบน Desktop และเพื่อประโยชน์ด้าน SEO</li><li class='mb-2'><strong>Social Media (Facebook, Instagram, TikTok):</strong> สำหรับการตลาดและสร้างชุมชน</li></ul>"
-            },
-            "ความสัมพันธ์กับลูกค้า (Customer Relationships)": {
-                icon: "❤️",
-                details: "<ul><li class='mb-2'><strong>ระบบสนับสนุนลูกค้า (Customer Support):</strong> ทีมงานพร้อมช่วยเหลือรวดเร็ว</li><li class='mb-2'><strong>การสร้างชุมชน (Community Building):</strong> จัดกิจกรรม, สร้าง Group พูดคุยตามความสนใจ</li><li class='mb-2'><strong>ระบบแจ้งเตือนอัจฉริยะ (Smart Notification):</strong> แจ้งเตือนส่วนบุคคล</li></ul>"
-            },
-            "แหล่งที่มาของรายได้ (Revenue Streams)": {
-                icon: "💰",
-                details: "<ul><li class='mb-2'><strong>ค่าธรรมเนียมการทำธุรกรรม (Transaction Fee)</li><li class='mb-2'><strong>ค่าบริการเสริม (Value-Added Services):</strong> เช่น Promote Post, Highlight Listing</li><li class='mb-2'><strong>ค่าธรรมเนียมระบบ Escrow</li><li class='mb-2'><strong>โมเดลสมาชิก (Subscription Model)</li></ul>"
-            },
-            "กิจกรรมหลัก (Key Activities)": {
-                icon: "⚙️",
-                details: "<ul><li class='mb-2'>การพัฒนาและบำรุงรักษาแพลตฟอร์ม</li><li class='mb-2'>การตลาดและดึงดูดผู้ใช้ (User Acquisition)</li><li class='mb-2'>การจัดการข้อพิพาทและดูแลความปลอดภัย</li><li class='mb-2'>การวิเคราะห์ข้อมูลเพื่อพัฒนาบริการ</li></ul>"
-            },
-            "พันธมิตรหลัก (Key Partnerships)": {
-                icon: "🤝",
-                details: "<ul><li class='mb-2'><strong>บริษัทขนส่ง:</strong> Kerry, Flash Express, ไปรษณีย์ไทย</li><li class='mb-2'><strong>ผู้ให้บริการ Payment Gateway:</strong> Omise, 2C2P, PromptPay, Mobile Banking</li><li class='mb-2'><strong>Influencers และ Communities:</strong> ผู้มีอิทธิพลในกลุ่มนักสะสมต่างๆ</li></ul>"
-            },
-            "ทรัพยากรหลัก (Key Resources)": {
-                icon: "🛠️",
-                details: "<ul><li class='mb-2'>แพลตฟอร์ม (แอปพลิเคชันและเว็บไซต์)</li><li class='mb-2'>ทีมพัฒนา (Development Team)</li><li class='mb-2'>ทีมการตลาดและดูแลชุมชน (Marketing & Community Team)</li><li class='mb-2'>พันธมิตรด้านการชำระเงินและขนส่ง</li></ul>"
-            },
-            "โครงสร้างต้นทุน (Cost Structure)": {
-                icon: "💸",
-                details: "<ul><li class='mb-2'>ต้นทุนการพัฒนาและดูแลระบบ (Server & Infrastructure)</li><li class='mb-2'>เงินเดือนทีมงาน</li><li class='mb-2'>ค่าใช้จ่ายด้านการตลาดและโฆษณา</li><li class='mb-2'>ค่าธรรมเนียม Payment Gateway</li></ul>"
-            }
+            "กลุ่มลูกค้าหลัก (Customer Segments)": { icon: "👥", details: "<ul><li class='mb-2'><strong>บุคคลทั่วไป (C2C):</strong> ผู้ที่ต้องการขายของมือสอง, ซื้อของในราคาที่ถูกลง, หรือหาของที่ไม่ผลิตแล้ว</li><li class='mb-2'><strong>นักสะสม (Collectors):</strong> กลุ่มเป้าหมายสำคัญสำหรับการประมูลและแลกเปลี่ยน (เช่น พระเครื่อง, ของเล่น, การ์ดเกม)</li><li class='mb-2'><strong>ผู้ประกอบการรายย่อย (SMEs):</strong> ร้านค้าขนาดเล็กที่ต้องการช่องทางในการขายสินค้า</li><li class='mb-2'><strong>กลุ่มเฉพาะทาง (Niche Communities):</strong> กลุ่มคนรักกล้องฟิล์ม, เกมเมอร์, กลุ่มแฟชั่น</li></ul>" },
+            "คุณค่าที่นำเสนอ (Value Propositions)": { icon: "🎁", details: "<ul><li class='mb-2'><strong>ความสะดวกครบวงจร (One-Stop Service):</strong> แพลตฟอร์มเดียวจบ ไม่ต้องสลับแอปฯ</li><li class='mb-2'><strong>ความปลอดภัยและน่าเชื่อถือ (Trust & Security):</strong> ผ่านระบบ Escrow, การยืนยันตัวตน (KYC), และระบบรีวิวผู้ใช้</li><li class='mb-2'><strong>โอกาสในการค้นพบสิ่งใหม่ (Discovery):</strong> แหล่งรวมสินค้าหายากและสินค้าเฉพาะกลุ่ม</li></ul>" },
+            "ช่องทาง (Channels)": { icon: "📢", details: "<ul><li class='mb-2'><strong>Mobile Application (iOS & Android):</strong> ช่องทางหลัก เน้น UI/UX ที่ใช้งานง่าย</li><li class='mb-2'><strong>Website:</strong> สำหรับการใช้งานบน Desktop และเพื่อประโยชน์ด้าน SEO</li><li class='mb-2'><strong>Social Media (Facebook, Instagram, TikTok):</strong> สำหรับการตลาดและสร้างชุมชน</li></ul>" },
+            "ความสัมพันธ์กับลูกค้า (Customer Relationships)": { icon: "❤️", details: "<ul><li class='mb-2'><strong>ระบบสนับสนุนลูกค้า (Customer Support):</strong> ทีมงานพร้อมช่วยเหลือรวดเร็ว</li><li class='mb-2'><strong>การสร้างชุมชน (Community Building):</strong> จัดกิจกรรม, สร้าง Group พูดคุยตามความสนใจ</li><li class='mb-2'><strong>ระบบแจ้งเตือนอัจฉริยะ (Smart Notification):</strong> แจ้งเตือนส่วนบุคคล</li></ul>" },
+            "แหล่งที่มาของรายได้ (Revenue Streams)": { icon: "💰", details: "<ul><li class='mb-2'><strong>ค่าธรรมเนียมการทำธุรกรรม (Transaction Fee)</li><li class='mb-2'><strong>ค่าบริการเสริม (Value-Added Services):</strong> เช่น Promote Post, Highlight Listing</li><li class='mb-2'><strong>ค่าธรรมเนียมระบบ Escrow</li><li class='mb-2'><strong>โมเดลสมาชิก (Subscription Model)</li></ul>" },
+            "กิจกรรมหลัก (Key Activities)": { icon: "⚙️", details: "<ul><li class='mb-2'>การพัฒนาและบำรุงรักษาแพลตฟอร์ม</li><li class='mb-2'>การตลาดและดึงดูดผู้ใช้ (User Acquisition)</li><li class='mb-2'>การจัดการข้อพิพาทและดูแลความปลอดภัย</li><li class='mb-2'>การวิเคราะห์ข้อมูลเพื่อพัฒนาบริการ</li></ul>" },
+            "พันธมิตรหลัก (Key Partnerships)": { icon: "🤝", details: "<ul><li class='mb-2'><strong>บริษัทขนส่ง:</strong> Kerry, Flash Express, ไปรษณีย์ไทย</li><li class='mb-2'><strong>ผู้ให้บริการ Payment Gateway:</strong> Omise, 2C2P, PromptPay, Mobile Banking</li><li class='mb-2'><strong>Influencers และ Communities:</strong> ผู้มีอิทธิพลในกลุ่มนักสะสมต่างๆ</li></ul>" },
+            "ทรัพยากรหลัก (Key Resources)": { icon: "🛠️", details: "<ul><li class='mb-2'>แพลตฟอร์ม (แอปพลิเคชันและเว็บไซต์)</li><li class='mb-2'>ทีมพัฒนา (Development Team)</li><li class='mb-2'>ทีมการตลาดและดูแลชุมชน (Marketing & Community Team)</li><li class='mb-2'>พันธมิตรด้านการชำระเงินและขนส่ง</li></ul>" },
+            "โครงสร้างต้นทุน (Cost Structure)": { icon: "💸", details: "<ul><li class='mb-2'>ต้นทุนการพัฒนาและดูแลระบบ (Server & Infrastructure)</li><li class='mb-2'>เงินเดือนทีมงาน</li><li class='mb-2'>ค่าใช้จ่ายด้านการตลาดและโฆษณา</li><li class='mb-2'>ค่าธรรมเนียม Payment Gateway</li></ul>" }
         };
 
-        const gtmStrategyData = [
-            {
-                step: "1",
-                title: "เริ่มต้นจาก Niche Market",
-                description: "เจาะตลาดกลุ่มนักสะสมก่อน เพราะมี Pain Point ชัดเจนและยังไม่มีแพลตฟอร์มที่ตอบโจทย์โดยตรง เพื่อสร้าง Word-of-Mouth ที่แข็งแกร่ง"
-            },
-            {
-                step: "2",
-                title: "สร้างความเชื่อมั่น",
-                description: "โปรโมทระบบ Escrow และการยืนยันตัวตนให้เป็นจุดขายหลัก เพื่อแก้ปัญหาการโกงที่พบบ่อยในตลาด C2C และสร้างความแตกต่าง"
-            },
-            {
-                step: "3",
-                title: "ค่าธรรมเนียมจูงใจ",
-                description: "ช่วงเปิดตัวอาจฟรีค่าธรรมเนียมทั้งหมดเพื่อดึงดูดผู้ใช้ให้เข้ามาสร้างฐานข้อมูลและผู้ซื้อ/ผู้ขายให้มากพอ (Critical Mass)"
-            },
-            {
-                step: "4",
-                title: "UI/UX เพื่อคนไทย",
-                description: "ออกแบบให้เรียบง่าย เข้าใจง่าย และรองรับภาษาไทยอย่างสมบูรณ์แบบ เพื่อประสบการณ์การใช้งานที่ดีที่สุด"
-            }
-        ];
-        
-        const foundationData = [
-            { title: "พันธมิตรหลัก", icon: "🤝", content: "บริษัทขนส่ง, ผู้ให้บริการ Payment Gateway, และ Influencers ในกลุ่มต่างๆ" },
-            { title: "ทรัพยากรหลัก", icon: "🛠️", content: "แพลตฟอร์มที่เสถียร, ทีมพัฒนาและการตลาดที่มีคุณภาพ" },
-            { title: "โครงสร้างต้นทุน", icon: "💸", content: "ค่าพัฒนาระบบ, เงินเดือนทีมงาน, ค่าการตลาด, และค่าธรรมเนียมธุรกรรม" }
+        const showcaseData = {
+            trade: [
+                { title: 'กล้องฟิล์มวินเทจ', category: 'ของสะสม', img: 'img/กล้องฟิล์ม.png' },
+                { title: 'โต๊ะไม้แกะสลัก', category: 'เฟอร์นิเจอร์', img: 'img/โต๊ะไม้.png' },
+                { title: 'เครื่องเล่นแผ่นเสียง', category: 'ของสะสม', img: 'img/เครื่องเล่นแผ่นเสียง.png' },
+            ],
+            sell: [
+                { title: 'แล็ปท็อป UltraBook', category: 'อิเล็กทรอนิกส์', img: 'img/Laptop.png' },
+                { title: 'รองเท้าวิ่ง', category: 'แฟชั่น', img: 'img/รองเท้า.png' },
+                { title: 'หูฟังไร้สาย', category: 'อิเล็กทรอนิกส์', img: 'img/หูฟัง.png' },
+            ],
+            bid: [
+                { title: 'นาฬิกาโครโนกราฟ', category: 'ของสะสมหายาก', img: 'img/นาฬิกา.png' },
+                { title: 'โดรนถ่ายภาพ', category: 'อิเล็กทรอนิกส์', img: 'img/โดรน.png' },
+                { title: 'เหรียญเงินโบราณ', category: 'ของสะสมหายาก', img: 'img/เหรียญ.png' },
+            ]
+        };
+
+        const whyNowData = [
+            { icon: '📈', title: 'ตลาด C2C เติบโต', description: 'ผู้บริโภคยุคใหม่นิยมสินค้ามือสองมากขึ้น ทั้งจากปัจจัยด้านราคาและความยั่งยืน (Sustainability)' },
+            { icon: '🎨', title: 'Niche Community แข็งแกร่ง', description: 'กลุ่มนักสะสมและผู้มีความสนใจเฉพาะทางในไทยมีขนาดใหญ่และกำลังมองหาพื้นที่สำหรับซื้อขายแลกเปลี่ยนโดยเฉพาะ' },
+            { icon: '📱', title: 'พฤติกรรม Mobile-First', description: 'คนไทยคุ้นเคยกับการทำธุรกรรมผ่านมือถือ ทำให้แพลตฟอร์มที่เน้น Mobile App สามารถเข้าถึงผู้ใช้ได้ง่าย' }
         ];
 
+        const teamData = [
+            { name: 'คุณวิสาข์ เจิดเจริญดี', title: 'CEO & Co-Founder', img: 'img/ceo.jpg', bio: 'วิศวกรผู้หลงใหลในการสร้างสรรค์ผลิตภัณฑ์ที่ตอบโจทย์และมอบประสบการณ์ที่ดีที่สุดให้ผู้ใช้' },
+        ];
+
+        const gtmStrategyData = [
+            { step: "1", title: "เริ่มต้นจาก Niche Market", description: "เจาะตลาดกลุ่มนักสะสมก่อน เพราะมี Pain Point ชัดเจนและยังไม่มีแพลตฟอร์มที่ตอบโจทย์โดยตรง เพื่อสร้าง Word-of-Mouth ที่แข็งแกร่ง" },
+            { step: "2", title: "สร้างความเชื่อมั่น", description: "โปรโมทระบบ Escrow และการยืนยันตัวตนให้เป็นจุดขายหลัก เพื่อแก้ปัญหาการโกงที่พบบ่อยในตลาด C2C และสร้างความแตกต่าง" },
+            { step: "3", title: "ค่าธรรมเนียมจูงใจ", description: "ช่วงเปิดตัวอาจฟรีค่าธรรมเนียมทั้งหมดเพื่อดึงดูดผู้ใช้ให้เข้ามาสร้างฐานข้อมูลและผู้ซื้อ/ผู้ขายให้มากพอ (Critical Mass)" },
+            { step: "4", title: "UI/UX เพื่อคนไทย", description: "ออกแบบให้เรียบง่าย เข้าใจง่าย และรองรับภาษาไทยอย่างสมบูรณ์แบบ เพื่อประสบการณ์การใช้งานที่ดีที่สุด" }
+        ];
+        
         document.addEventListener('DOMContentLoaded', () => {
             const canvasContainer = document.querySelector('#canvas .grid');
             Object.keys(businessModelData).forEach(key => {
@@ -257,26 +292,32 @@
             gtmStrategyData.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'bg-white p-6 rounded-lg shadow-custom border-t-4 border-accent-teal';
-                card.innerHTML = `
-                    <div class="flex items-center mb-3">
-                        <div class="bg-accent-teal text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-lg mr-4">${item.step}</div>
-                        <h3 class="font-semibold text-lg text-warm-brown">${item.title}</h3>
-                    </div>
-                    <p class="text-warm-brown/80">${item.description}</p>
-                `;
+                card.innerHTML = `<div class="flex items-center mb-3"><div class="bg-accent-teal text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-lg mr-4">${item.step}</div><h3 class="font-semibold text-lg text-warm-brown">${item.title}</h3></div><p class="text-warm-brown/80">${item.description}</p>`;
                 strategyContainer.appendChild(card);
             });
-            
-            const foundationContainer = document.getElementById('foundation-section');
-            foundationData.forEach(item => {
-                 const card = document.createElement('div');
-                 card.className = 'bg-accent-teal-light p-6 rounded-lg border-l-4 border-accent-teal';
-                 card.innerHTML = `<div class="flex items-start"><div class="text-3xl mr-4">${item.icon}</div><div><h3 class="font-semibold text-xl mb-2 text-warm-brown">${item.title}</h3><p class="text-warm-brown/80">${item.content}</p></div></div>`;
-                 foundationContainer.appendChild(card);
+
+            const whyNowContainer = document.getElementById('why-now-cards');
+            whyNowData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-accent-teal-light p-6 rounded-lg border-b-4 border-accent-teal';
+                card.innerHTML = `<div class="text-5xl mb-4">${item.icon}</div><h3 class="font-semibold text-xl mb-2 text-warm-brown">${item.title}</h3><p class="text-warm-brown/80">${item.description}</p>`;
+                whyNowContainer.appendChild(card);
+            });
+
+            const teamContainer = document.getElementById('team-cards');
+            teamData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-lg shadow-custom text-center p-6 transform hover:-translate-y-2 transition-transform duration-300';
+                card.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-accent-teal-light object-cover">
+                    <h3 class="font-bold text-xl text-warm-brown">${item.name}</h3>
+                    <p class="text-accent-teal font-semibold mb-2">${item.title}</p>
+                    <p class="text-warm-brown/80 text-sm">${item.bio}</p>
+                `;
+                teamContainer.appendChild(card);
             });
 
             const modal = document.getElementById('modal');
-            const modalContent = document.getElementById('modal-content');
             const modalClose = document.getElementById('modal-close');
             modalClose.addEventListener('click', hideModal);
             modal.addEventListener('click', (e) => {
@@ -287,39 +328,58 @@
                 document.getElementById('modal-title').textContent = title;
                 document.getElementById('modal-body').innerHTML = details;
                 modal.classList.remove('invisible', 'opacity-0');
-                modal.classList.add('visible', 'opacity-100');
-                modalContent.classList.remove('scale-95');
-                modalContent.classList.add('scale-100');
-
             }
 
             function hideModal() {
                 modal.classList.add('opacity-0');
-                modalContent.classList.add('scale-95');
-                setTimeout(() => {
-                    modal.classList.add('invisible');
-                }, 300);
+                setTimeout(() => { modal.classList.add('invisible'); }, 300);
             }
             
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+            mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+            document.querySelectorAll('#mobile-menu a').forEach(link => { link.addEventListener('click', () => mobileMenu.classList.add('hidden')); });
             
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-            });
+            function renderShowcase() {
+                const showcaseContainer = document.querySelector('#showcase');
+                Object.keys(showcaseData).forEach(key => {
+                    const container = showcaseContainer.querySelector(`#${key}`);
+                    showcaseData[key].forEach(item => {
+                        const card = document.createElement('div');
+                        card.className = 'bg-white rounded-lg shadow-custom overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300';
+                        card.innerHTML = `
+                            <img src="${item.img}" alt="${item.title}" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="p-4">
+                                <h4 class="font-semibold text-lg text-warm-brown">${item.title}</h4>
+                                <p class="text-sm text-warm-brown/70">${item.category}</p>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    });
+                });
 
+                const tabButtons = document.querySelectorAll('.tab-btn');
+                const tabContents = document.querySelectorAll('.tab-content');
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        tabContents.forEach(content => content.classList.add('hidden'));
+                        button.classList.add('active');
+                        document.getElementById(button.dataset.tab).classList.remove('hidden');
+                    });
+                });
+            }
+
+            renderShowcase();
             renderCustomerChart();
-            renderRevenueChart();
+            renderFinancialsChart();
         });
         
         const customerSegmentsData = [
-            { name: 'นักสะสม (Collectors)', value: 40, description: 'กลุ่มเป้าหมายหลักในช่วงเริ่มต้น มีกำลังซื้อสูงและมีความต้องการสินค้าเฉพาะทางที่ชัดเจน การสร้างชื่อเสียงในกลุ่มนี้จะช่วยดึงดูดผู้ใช้กลุ่มอื่น' },
-            { name: 'บุคคลทั่วไป (C2C)', value: 30, description: 'ตลาดขนาดใหญ่สำหรับสินค้ามือสองและสินค้าราคาประหยัด เป็นกลุ่มที่จะเติบโตตามมาหลังแพลตฟอร์มมีความน่าเชื่อถือ' },
-            { name: 'ผู้ประกอบการ (SMEs)', value: 15, description: 'ร้านค้าขนาดเล็กที่มองหาช่องทางการขายใหม่ๆ ทั้งการขายปกติและจัดโปรโมชั่นผ่านการประมูลเพื่อสร้างการรับรู้' },
-            { name: 'กลุ่มเฉพาะทาง (Niche)', value: 15, description: 'คอมมูนิตี้ต่างๆ เช่น กลุ่มคนรักกล้องฟิล์ม, เกมเมอร์ ที่ต้องการพื้นที่สำหรับแลกเปลี่ยนสินค้าและความรู้โดยเฉพาะ' },
+            { name: 'นักสะสม (Collectors)', value: 40, description: 'กลุ่มเป้าหมายหลักในช่วงเริ่มต้น มีกำลังซื้อสูงและมีความต้องการสินค้าเฉพาะทางที่ชัดเจน' },
+            { name: 'บุคคลทั่วไป (C2C)', value: 30, description: 'ตลาดขนาดใหญ่สำหรับสินค้ามือสองและสินค้าราคาประหยัด' },
+            { name: 'ผู้ประกอบการ (SMEs)', value: 15, description: 'ร้านค้าขนาดเล็กที่มองหาช่องทางการขายใหม่ๆ เพื่อสร้างการรับรู้' },
+            { name: 'กลุ่มเฉพาะทาง (Niche)', value: 15, description: 'คอมมูนิตี้ต่างๆ ที่ต้องการพื้นที่สำหรับแลกเปลี่ยนสินค้าและความรู้โดยเฉพาะ' },
         ];
         
         function renderCustomerChart() {
@@ -329,7 +389,7 @@
             customerSegmentsData.forEach((segment, index) => {
                 const infoCard = document.createElement('div');
                 infoCard.id = `info-${index}`;
-                infoCard.className = 'p-4 rounded-lg bg-white border-l-4 transition-all duration-300';
+                infoCard.className = 'p-4 rounded-lg bg-white border-l-4 transition-all duration-300 border-transparent';
                 infoCard.innerHTML = `<h3 class="font-semibold text-lg">${segment.name}</h3><p class="text-warm-brown/80">${segment.description}</p>`;
                 customerInfoContainer.appendChild(infoCard);
             });
@@ -342,34 +402,16 @@
                         label: 'กลุ่มลูกค้า',
                         data: customerSegmentsData.map(s => s.value),
                         backgroundColor: ['#14B8A6', '#5EEAD4', '#A7F3D0', '#CCFBF1'],
-                        borderColor: '#FDFBF5',
+                        borderColor: '#ffffff',
                         borderWidth: 4,
                         hoverOffset: 16
                     }]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '60%',
+                    responsive: true, maintainAspectRatio: false, cutout: '60%',
                     plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                padding: 20,
-                                font: {
-                                    family: "'Kanit', sans-serif",
-                                    size: 14
-                                }
-                            }
-                        },
-                        tooltip: {
-                             bodyFont: {
-                                family: "'Kanit', sans-serif",
-                            },
-                            titleFont: {
-                                family: "'Kanit', sans-serif",
-                            }
-                        }
+                        legend: { position: 'bottom', labels: { padding: 20, font: { family: "'Kanit', sans-serif", size: 14 } } },
+                        tooltip: { bodyFont: { family: "'Kanit', sans-serif" }, titleFont: { family: "'Kanit', sans-serif" } }
                     },
                     onHover: (event, chartElement) => {
                          customerSegmentsData.forEach((segment, index) => {
@@ -377,7 +419,6 @@
                             if (chartElement.length > 0 && chartElement[0].index === index) {
                                 infoCard.classList.add('shadow-lg', 'border-accent-teal');
                                 infoCard.classList.remove('border-transparent');
-
                             } else {
                                 infoCard.classList.remove('shadow-lg', 'border-accent-teal');
                                 infoCard.classList.add('border-transparent');
@@ -390,69 +431,46 @@
             document.getElementById('info-0').classList.remove('border-transparent');
         }
 
-        function renderRevenueChart() {
-            const ctx = document.getElementById('revenueChart').getContext('2d');
-            const revenueChart = new Chart(ctx, {
-                type: 'bar',
+        function renderFinancialsChart() {
+            const ctx = document.getElementById('financialsChart').getContext('2d');
+            const financialsChart = new Chart(ctx, {
+                type: 'line',
                 data: {
-                    labels: ['ค่าธรรมเนียมธุรกรรม', 'บริการเสริม (Promote)', 'ค่าบริการ Escrow', 'โมเดลสมาชิก (Pro)'],
+                    labels: ['เริ่มต้น', 'ปีที่ 1', 'ปีที่ 2', 'ปีที่ 3'],
                     datasets: [{
-                        label: 'สัดส่วนรายได้ที่คาดหวัง',
-                        data: [65, 20, 5, 10],
-                        backgroundColor: ['#14B8A6', '#5EEAD4', '#A7F3D0', '#CCFBF1'],
-                        borderRadius: 5,
-                        borderWidth: 0
+                        label: 'ประมาณการรายได้ (ล้านบาท)',
+                        data: [0, 15, 75, 250],
+                        borderColor: '#14B8A6',
+                        backgroundColor: 'rgba(20, 184, 166, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#14B8A6',
+                        pointRadius: 5,
+                        pointHoverRadius: 7
                     }]
                 },
                 options: {
-                    indexAxis: 'y',
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                        x: {
+                        y: {
                             beginAtZero: true,
-                            grid: {
-                                display: false,
-                                drawBorder: false,
-                            },
-                             ticks: {
-                                callback: function(value) {
-                                    return value + '%'
-                                },
-                                font: {
-                                    family: "'Kanit', sans-serif"
-                                }
+                            ticks: {
+                                callback: function(value) { return value + ' ลบ.' },
+                                font: { family: "'Kanit', sans-serif" }
                             }
                         },
-                        y: {
-                             grid: {
-                                display: false
-                            },
-                             ticks: {
-                                font: {
-                                    family: "'Kanit', sans-serif",
-                                    size: 14
-                                }
-                            }
+                        x: {
+                            ticks: { font: { family: "'Kanit', sans-serif" } }
                         }
                     },
                     plugins: {
-                        legend: {
-                            display: false
-                        },
-                         tooltip: {
-                             callbacks: {
-                                 label: function(context) {
-                                     return ` ${context.dataset.label}: ${context.raw}%`;
-                                 }
-                             },
-                             bodyFont: {
-                                family: "'Kanit', sans-serif",
-                            },
-                            titleFont: {
-                                family: "'Kanit', sans-serif",
-                            }
-                         }
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: { label: (context) => `${context.dataset.label}: ${context.formattedValue} บาท` },
+                            bodyFont: { family: "'Kanit', sans-serif" },
+                            titleFont: { family: "'Kanit', sans-serif" }
+                        }
                     }
                 }
             });
